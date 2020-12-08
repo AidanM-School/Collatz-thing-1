@@ -3,7 +3,7 @@ def collatz_gen(n):
   collatz_collection[1]=[1]
   for i in range(2,n):
     next_list=[i]
-    next_thing=collatz(i)
+    next_thing=i
     while True:
       next_thing = collatz(next_thing)
       if next_thing == 1:
@@ -19,7 +19,7 @@ def collatz_gen(n):
     for j in collatz_collection[i]:
       if not j in collatz_collection:
         f=collatz_collection[i].index(j)
-        collatz_collection[j]=collatz_collection[i][:f]
+        collatz_collection[j]=collatz_collection[i][f:]
   return collatz_collection
 
 def collatz(n):
@@ -56,5 +56,5 @@ def main():
   for i in range(3,g):
     avg+=len(l[i])
   avg/=g-2
-  print("The average length of all of the strings from 2 to 10000 is {}.".format(avg))
+  print("The average length of all of the strings from 2 to {} is {}.".format(g,avg))
 main()
